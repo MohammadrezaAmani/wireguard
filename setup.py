@@ -1,27 +1,29 @@
-
 import os
+
 import setuptools
+
 
 def readme():
     path = os.path.dirname(__file__)
-    with open(os.path.join(path, 'README.rst')) as f:
+    with open(os.path.join(path, "README.rst")) as f:
         return f.read()
 
-name = 'wireguard'
-description = 'Wireguard Utilities'
-version = '0.5.0'
-author = 'Fictive Kin LLC'
-email = 'hello@fictivekin.com'
+
+name = "wireguard"
+description = "Wireguard Utilities"
+version = "0.5.0"
+author = "Fictive Kin LLC"
+email = "hello@fictivekin.com"
 classifiers = [
-    'Development Status :: 3 - Alpha',
-    'License :: OSI Approved :: MIT License',
-    'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'Topic :: Software Development',
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development",
 ]
 
 if __name__ == "__main__":
@@ -31,27 +33,27 @@ if __name__ == "__main__":
         description=description,
         long_description=readme(),
         classifiers=classifiers,
-        url='https://github.com/fictivekin/wireguard',
+        url="https://github.com/fictivekin/wireguard",
         author=author,
         author_email=email,
         maintainer=author,
         maintainer_email=email,
-        license='MIT',
+        license="MIT",
         python_requires=">=3.6",
         packages=[
-            'wireguard',
-            'wireguard.cli',
-            'wireguard.utils',
+            "wireguard",
+            "wireguard.cli",
+            "wireguard.utils",
         ],
         install_requires=[
-            'click',
-            'pynacl',
-            'subnet-utils',
+            "click",
+            "pynacl",
+            "subnet-utils",
         ],
         scripts=[
-            'bin/wireguard',
+            "bin/wireguard",
         ],
         extras_require={
-            'qr': ['qrcode[pil]'],
+            "qr": ["qrcode[pil]"],
         },
     )

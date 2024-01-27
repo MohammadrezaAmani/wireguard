@@ -1,12 +1,6 @@
-
 import json
 
-from subnet import (
-    IPv4Address,
-    IPv4Network,
-    IPv6Address,
-    IPv6Network,
-)
+from subnet import IPv4Address, IPv4Network, IPv6Address, IPv6Network
 
 from .sets import ClassedSet
 
@@ -17,13 +11,22 @@ class JSONEncoder(json.JSONEncoder):
     """
 
     def default(self, o):
-        if isinstance(o, (IPv4Address, IPv6Address, IPv4Network, IPv6Network,)):
+        if isinstance(
+            o,
+            (
+                IPv4Address,
+                IPv6Address,
+                IPv4Network,
+                IPv6Network,
+            ),
+        ):
             return str(o)
 
         if isinstance(o, ClassedSet):
             return list(o)
 
         from ..peer import Peer  # pylint: disable=import-outside-toplevel,cyclic-import
+
         if isinstance(o, Peer):
             return dict(o)
 

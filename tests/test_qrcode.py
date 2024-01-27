@@ -1,20 +1,16 @@
-
 import pytest
 
-from wireguard import (
-    Peer,
-)
+from wireguard import Peer
 
 
 def test_peer_qrcode():
-
     # If qrcode is present in the venv, test it works.
-    pytest.importorskip('qrcode', reason='QRCode is NOT available')
+    pytest.importorskip("qrcode", reason="QRCode is NOT available")
 
-    address = '192.168.0.1'
+    address = "192.168.0.1"
 
     peer = Peer(
-        'test-peer',
+        "test-peer",
         address=address,
     )
 
@@ -22,17 +18,17 @@ def test_peer_qrcode():
 
 
 def test_peer_qrcode_not_present():
-
     try:
         import qrcode
-        pytest.skip('QRCode is available')
+
+        pytest.skip("QRCode is available")
     except ImportError:
         pass
 
-    address = '192.168.0.1'
+    address = "192.168.0.1"
 
     peer = Peer(
-        'test-peer',
+        "test-peer",
         address=address,
     )
 
@@ -40,4 +36,4 @@ def test_peer_qrcode_not_present():
     with pytest.raises(AttributeError) as exc:
         peer.config.qrcode
 
-    assert 'add the qrcode' in str(exc.value)
+    assert "add the qrcode" in str(exc.value)
